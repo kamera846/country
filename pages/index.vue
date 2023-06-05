@@ -1,5 +1,7 @@
 <template>
-	<Tutorial />
+	<div class="main">
+        <h3 class="text-welcome">Welcome to nuxt SCSS</h3>
+    </div>
 </template>
 
 <script>
