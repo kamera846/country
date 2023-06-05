@@ -1,0 +1,57 @@
+@import "../utilities/colors";
+@import "../utilities/dimensions";
+
+.search-dropdown {
+    .box-input {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        min-width: fit-content;
+        
+        border: 0.5px solid $ligh-gray;
+        border-radius: $multipleOfFive * 2;
+
+        &.active {
+            border: 2px solid #8362F2;
+            border-radius: 10px;
+            outline: 1px solid rgba(131, 98, 242, 0.5);
+
+            .search-icon {
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+
+        .search-input {
+            width: 100%;
+
+            padding: ($multipleOfFive * 4) ($multipleOfFour * 7);
+
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+
+            border: none;
+            outline: none;
+
+            background-color: transparent;
+            color: $black;
+
+            &::placeholder {
+                color: $ligh-gray;
+            }
+        }
+
+        .search-icon {
+            cursor: pointer;
+            margin-right: $multipleOfFour * 7;
+
+            path {
+                fill: $ligh-gray;
+            }
+        }
+    }
+}
