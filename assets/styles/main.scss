@@ -1,6 +1,10 @@
 @import './utilities/colors';
+@import './utilities/dimensions';
+@import '../fonts/SF-Pro-Text/index.scss';
 
 html, body {
+    font-family: 'SF Pro Text', sans-serif;
+
     margin: 0;
     padding: 0;
 }
@@ -10,16 +14,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
-.main {
-    .text-welcome {
-        cursor: pointer;
-        color: $green;
-        text-decoration: none;
-        
-        &:hover {
-            color: $red;
-            text-decoration: underline;
-        }
+.wrapper {
+    width: 100%;
+    height: auto;
 
+    .container {
+        padding: 0 ($multipleOfFive * 18);
     }
 }

@@ -1,39 +1,20 @@
 <template>
-	<div class="main">
-        <h3 class="text-welcome">Welcome to nuxt SCSS</h3>
+	<div id="main">
+        
+        <div class="main-title wrapper">
+            <div class="container">
+                <h1 class="text">Country</h1>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-
 export default {
-	name: "IndexPage",
-	computed: {
-        ...mapState({
-            countryState: (state) => state?.country
-        })
-    },
-    methods: {
-        ...mapActions({
-            listCountry: "country/countries",
-            searchCountry: "country/search",
-        }),
-
-        fetchCountries() {
-            const params = {
-                fields: 'name,flags'
-            }
-            this.listCountry(params).then(() => {
-                const response = this.countryState
-
-                if (response?.status === 404) console.error(response?.message);
-                else console.log(response?.data);
-            })
-        }
-    },
-    mounted() {
-        this.fetchCountries()
-    }
+	name: "SearchEnginePage"
 };
 </script>
+
+<style lang="sass">
+@import "@/assets/styles/pages/main.scss"
+</style>
