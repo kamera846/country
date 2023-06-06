@@ -23,6 +23,6 @@ export default {
 };
 </script>
 
-<style lang="sass">
-@import "@/assets/styles/pages/main.scss"
+<style lang="scss">
+@import "@/assets/styles/pages/main.scss";
 </style>

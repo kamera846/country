@@ -59,6 +59,6 @@ export default {
 }
 </script>
 
-<style lang="sass">
-@import "@/assets/styles/components/search-dropdown.scss"
+<style lang="scss">
+@import "@/assets/styles/components/search-dropdown.scss";
 </style>
