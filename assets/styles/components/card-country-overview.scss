@@ -1,0 +1,56 @@
+@import "../utilities/colors";
+@import "../utilities/dimensions";
+
+.card-country-overview {
+    font-style: normal;
+    color: $black;
+
+    .title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: $multipleOfFive;
+    }
+
+    .content {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 57px;
+
+        color: $primary;
+        margin-bottom: $multipleOfFive * 2;
+    }
+
+    .box-description {
+        position: relative;
+
+        .description {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 17px;
+    
+            .items {
+                cursor: pointer;
+                text-decoration-line: underline;
+                color: $primary;
+            }
+        }
+    
+        .card-tooltip-items {
+            position: absolute;
+            right: 0;
+            left: 0;
+
+            margin-top: $multipleOfFour * 7;
+
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+
+            z-index: 5;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+}
