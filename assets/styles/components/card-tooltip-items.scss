@@ -1,0 +1,20 @@
+@import "../utilities/colors";
+@import "../utilities/dimensions";
+
+.card-tooltip-items {
+    min-width: 200px;
+    background: $dark-gray;
+    border-radius: 10px;
+    padding: ($multipleOfFive * 2) 0;
+
+    li {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+
+        color: $white;
+
+        padding: ($multipleOfFive * 2) ($multipleOfFive * 4);
+    }
+}
