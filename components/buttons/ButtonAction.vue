@@ -1,7 +1,7 @@
 <template>
     <nuxt-link class="btn-action" :to="to">
         <div v-if="withIcon" class="btn-icon">
-            <ArrowLeftIcon />
+            <IconArrowLeft />
         </div>
 
         <div class="btn-title">
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import ArrowLeftIcon from "@/components/icons/ArrowLeftIcon.vue"
+import IconArrowLeft from "@/components/icons/IconArrowLeft.vue"
 
 export default {
-    components: { ArrowLeftIcon },
+    components: { IconArrowLeft },
     props: {
         to: {
             type: String,

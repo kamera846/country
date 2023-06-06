@@ -12,7 +12,7 @@
                     
                     <!-- Optionally Icon -->
                     <div v-if="withIcon" class="search-icon" @click="setInputFocus">
-                        <SearchIcon />
+                        <IconSearch />
                     </div>
                 </div>
 
@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import SearchIcon from "@/components/icons/SearchIcon.vue";
+import IconSearch from "@/components/icons/IconSearch.vue";
 
 export default {
-    components: { SearchIcon },
+    components: { IconSearch },
     props: {
         placeholder: {
             type: String,
