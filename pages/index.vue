@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import InputSearchDropdown from "@/components/inputs/InputSearchDropdown.vue";
 import { mapState, mapActions } from "vuex";
+import InputSearchDropdown from "@/components/inputs/InputSearchDropdown.vue";
 
 export default {
 	name: "SearchEnginePage",

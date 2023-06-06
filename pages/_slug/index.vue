@@ -15,17 +15,15 @@
             <div class="container">
 
                 <div class="box-title">
-                    <h1 v-if="!isLoading" class="country-name">{{ this.slug }}</h1>
+                    <h1 v-if="!isCountryLoading" class="country-name">{{ country?.name }}</h1>
                     <div v-else class="skeleton small country-name"></div>
 
-                    <img v-if="!isLoading" class="country-flag" src="https://flagcdn.com/id.svg" alt="The flag of Indonesia is composed of two equal horizontal bands of red and white.">
+                    <img v-if="!isCountryLoading" class="country-flag" :src="country?.flags?.svg" :alt="country?.flags?.alt">
                 </div>
                 
                 <div class="box-badge">
-                    <ul v-if="!isLoading">
-                        <li class="badge badge-green">ID</li>
-                        <li class="badge badge-green">Republic of Indonesia</li>
-                        <li class="badge badge-green">Republic of Indonesia</li>
+                    <ul v-if="!isCountryLoading">
+                        <li v-for="(item, idx) in country?.altSpellings" :key="idx" class="badge badge-green">{{ item }}</li>
                     </ul>
                     <div v-else class="skeleton small"></div>
                 </div>
@@ -41,12 +39,12 @@
 
                     <!-- Component Card Country Location -->
                     <CardCountryLocation
-                        :isLoading="isLoading"
-                        :latLong="countryLatLong"
+                        :isLoading="isCountryLoading"
+                        :latLong="country?.latlng"
                         :iconUrl="require('@/assets/images/svg/globe.svg')" />
 
                     <!-- Component Card Country Location -->
-                    <CardCountryLocation :isLoading="isLoading" :location="countryLocation" />
+                    <CardCountryLocation :isLoading="isCountryLoading" :location="country?.locations" />
 
                 </div>
 
@@ -82,6 +80,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 import ButtonAction from "@/components/buttons/ButtonAction.vue";
 import CardCountryOverview from "@/components/cards/CardCountryOverview.vue";
 import CardCountryLocation from "@/components/cards/CardCountryLocation.vue";
@@ -93,19 +93,70 @@ export default {
         const slug = params?.slug
         return { slug }
     },
+    head() {
+        return {
+            title: `${ this.slug } | Country`
+        }
+    },
     data() {
         return {
             isLoading: false,
-            countryLatLong: {
-                latitude: "-5.0",
-                longitude: "120.0"
-            },
-            countryLocation: [
-                { name: 'Capital', value: 'Jakarta' },
-                { name: 'Region', value: 'Asia' },
-                { name: 'Subregion', value: 'South-Eastern Asia' },
-            ]
+            isCountryLoading: true,
+
+            country: null,
         }
+    },
+    computed: {
+        ...mapState({
+            countryState: (state) => state?.country,
+            callingcodeState: (state) => state?.callingcode,
+        })
+    },
+    methods: {
+        ...mapActions({
+            getCountry: 'country/search',
+            getCallingCode: 'callingcode/code',
+        }),
+        fetchCountry() {
+            this.isCountryLoading = true
+
+            const params = {
+                name: this.slug,
+                fields: 'name,flags,latlng,altSpellings,capital,region,subregion',
+                fullText: true
+            }
+
+            this.getCountry(params).then(() => {
+
+                const response = this.countryState
+
+                if (response?.status === 404) console.error(response?.message);
+                else {
+                    const data = response?.data[0]
+
+                    const object = {
+                        name: data?.name?.common,
+                        flags: data?.flags,
+                        altSpellings: data?.altSpellings,
+                        latlng: {
+                            latitude: data?.latlng[0].toFixed(1),
+                            longitude: data?.latlng[1].toFixed(1),
+                        },
+                        locations: [
+                            { name: 'capital', value: data?.capital[0] },
+                            { name: 'region', value: data?.region },
+                            { name: 'subregion', value: data?.subregion },
+                        ]
+                    }
+                    this.country = object
+                } 
+
+                this.isCountryLoading = false
+            })
+        }
+    },
+    mounted() {
+        this.fetchCountry()
     }
 };
 </script>
