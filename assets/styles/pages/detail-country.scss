@@ -38,12 +38,26 @@
     }
 
     .body {
+        .container:first-child {
+            margin-bottom: $multipleOfFive * 8;
+        }
+
         .box-overview {
             display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            flex-direction: row;
             gap: $multipleOfFive * 5;
+
+            .card-country-location, .card-country-overview {
+                width: 100%;
+                flex-grow: 1;
+            }
+
+            @media screen and (max-width: $mobileScreen) {
+                flex-wrap: wrap;
+            }
+            
+            @media screen and (max-width: $tabletScreen) {
+                flex-wrap: wrap;
+            }
         }
     }
 }
