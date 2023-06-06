@@ -2,55 +2,92 @@
 @import "../utilities/dimensions";
 
 .search-dropdown {
-    .box-input {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+    .input-group {
+        position: relative;
+        width: 100%;
 
-        min-width: fit-content;
-        
-        border: 0.5px solid $ligh-gray;
-        border-radius: $multipleOfFive * 2;
+        .box-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
 
-        &.active {
-            border: 2px solid #8362F2;
-            border-radius: 10px;
-            outline: 1px solid rgba(131, 98, 242, 0.5);
+            min-width: fit-content;
+            
+            border: 0.5px solid $ligh-gray;
+            border-radius: $multipleOfFive * 2;
+
+            .search-input {
+                width: 100%;
+
+                padding: ($multipleOfFive * 4) ($multipleOfFour * 7);
+
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 21px;
+
+                border: none;
+                outline: none;
+
+                background-color: transparent;
+                color: $black;
+
+                &::placeholder {
+                    color: $ligh-gray;
+                }
+            }
 
             .search-icon {
+                cursor: pointer;
+                margin-right: $multipleOfFour * 7;
+
                 path {
-                    fill: $primary;
+                    fill: $ligh-gray;
+                }
+            }
+
+        }
+        
+        .card {
+            padding: ($multipleOfFive * 3) 0;
+
+            &.box-dropdown {
+                position: absolute;
+                left: 0;
+                right: 0;
+    
+                margin-top: $multipleOfFive * 2;
+
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+
+                z-index: 5;
+
+                li {
+                    cursor: pointer;
+                    padding: ($multipleOfFive * 2) ($multipleOfFive * 5);
+
+                    &:hover {
+                        background-color: $thin-gray;
+                    }
                 }
             }
         }
 
-        .search-input {
-            width: 100%;
+        &.active {
+            .box-input {
+                border: 2px solid #8362F2;
+                border-radius: 10px;
+                outline: 1px solid rgba(131, 98, 242, 0.5);
 
-            padding: ($multipleOfFive * 4) ($multipleOfFour * 7);
-
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 21px;
-
-            border: none;
-            outline: none;
-
-            background-color: transparent;
-            color: $black;
-
-            &::placeholder {
-                color: $ligh-gray;
+                .search-icon {
+                    path {
+                        fill: $primary;
+                    }
+                }
             }
-        }
-
-        .search-icon {
-            cursor: pointer;
-            margin-right: $multipleOfFour * 7;
-
-            path {
-                fill: $ligh-gray;
+            .box-dropdown {
+                opacity: 1;
             }
         }
     }

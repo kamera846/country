@@ -10,8 +10,6 @@
     align-items: center;
     flex-direction: column;
 
-    .wrapper { text-align: center; }
-
     .main-title {
         &.wrapper { margin-bottom: $multipleOfFour * 10; }
 
@@ -22,6 +20,7 @@
             font-weight: 700;
             font-size: 72px;
             line-height: 86px;
+            text-align: center;
             
             color: $black;
         }
