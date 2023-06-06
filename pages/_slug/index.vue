@@ -15,16 +15,19 @@
             <div class="container">
 
                 <div class="box-title">
-                    <h1 class="country-name">{{ this.slug }}</h1>
-                    <img class="country-flag" src="https://flagcdn.com/id.svg" alt="The flag of Indonesia is composed of two equal horizontal bands of red and white.">
+                    <h1 v-if="!isLoading" class="country-name">{{ this.slug }}</h1>
+                    <div v-else class="skeleton small country-name"></div>
+
+                    <img v-if="!isLoading" class="country-flag" src="https://flagcdn.com/id.svg" alt="The flag of Indonesia is composed of two equal horizontal bands of red and white.">
                 </div>
                 
                 <div class="box-badge">
-                    <ul>
+                    <ul v-if="!isLoading">
                         <li class="badge badge-green">ID</li>
                         <li class="badge badge-green">Republic of Indonesia</li>
                         <li class="badge badge-green">Republic of Indonesia</li>
                     </ul>
+                    <div v-else class="skeleton small"></div>
                 </div>
 
             </div>
@@ -38,11 +41,12 @@
 
                     <!-- Component Card Country Location -->
                     <CardCountryLocation
+                        :isLoading="isLoading"
                         :latLong="countryLatLong"
                         :iconUrl="require('@/assets/images/svg/globe.svg')" />
 
                     <!-- Component Card Country Location -->
-                    <CardCountryLocation :location="countryLocation" />
+                    <CardCountryLocation :isLoading="isLoading" :location="countryLocation" />
 
                 </div>
 
@@ -54,6 +58,7 @@
 
                     <!-- Component Card Country Overview -->
                     <CardCountryOverview
+                        :isLoading="isLoading"
                         title="Calling Code"
                         content="62"
                         itemTitle="country"
@@ -61,6 +66,7 @@
 
                     <!-- Component Card Country Overview -->
                     <CardCountryOverview
+                        :isLoading="isLoading"
                         title="Currency"
                         content="IDR"
                         itemTitle="country"
@@ -89,6 +95,7 @@ export default {
     },
     data() {
         return {
+            isLoading: false,
             countryLatLong: {
                 latitude: "-5.0",
                 longitude: "120.0"

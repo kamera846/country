@@ -61,4 +61,10 @@
             font-weight: 500;
         }
     }
+
+    .skeleton-container {
+        width: 100%;
+
+        .skeleton { margin-bottom: $multipleOfFive; }
+    }
 }

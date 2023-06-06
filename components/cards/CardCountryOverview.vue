@@ -3,9 +3,12 @@
 
         <h6 class="title">{{ title }}</h6>
 
-        <h1 class="content">{{ content }}</h1>
+        <h1 v-if="!isLoading" class="content">{{ content }}</h1>
+        <div v-else class="skeleton-container content">
+            <div class="skeleton circle"></div>
+        </div>
 
-        <div class="box-description">
+        <div v-if="!isLoading" class="box-description">
 
             <p class="description">
                 <span class="items" v-on:mouseenter="showTooltip" v-on:mouseleave="hideTooltip">
@@ -18,6 +21,9 @@
             <CardTooltipItems :class="isShowTooltip" />
 
         </div>
+        <div v-else class="skeleton-container box-description">
+            <div class="skeleton medium"></div>
+        </div>
     </div>
 </template>
 
@@ -27,6 +33,10 @@ import CardTooltipItems from "@/components/cards/CardTooltipItems.vue";
 export default {
     components: { CardTooltipItems },
     props: {
+        isLoading: {
+            type: Boolean,
+            default: false
+        },
         title: {
             type: String,
             default: "Card Title"

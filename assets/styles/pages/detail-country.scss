@@ -11,6 +11,7 @@
             display: flex;
             align-items: center;
             gap: $multipleOfFive * 2;
+            margin-bottom: $multipleOfFive;
 
             .country-name {
                 font-style: normal;
