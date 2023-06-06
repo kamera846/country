@@ -70,6 +70,10 @@
                     &:hover {
                         background-color: $thin-gray;
                     }
+
+                    &.error {
+                        color: $red;
+                    }
                 }
             }
         }

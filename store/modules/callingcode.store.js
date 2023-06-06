@@ -1,4 +1,4 @@
-import { allCountries, countryByName } from '../api/v3.1/country'
+import { callingCodeApi } from '../api/v2/callingcode'
 
 export default {
     namespaced: true,
@@ -19,33 +19,9 @@ export default {
     },
     
     actions: {
-        async countries({ commit }, params) {
+        async code({ commit }, params) {
             try {
-                const response = await allCountries(params?.fields)
-    
-                const responseData = {
-                    data: response?.data || null,
-                    message: response?.data?.message || '',
-                    status: response?.data?.status || 200,
-                    _links: response?.data?._links || null,
-                }
-    
-                commit('SET_RESPONSE', responseData);
-            } catch (error) {
-                const responseData = {
-                    data: null,
-                    message: `Failed fetch data. Error: ${ error }`,
-                    status: 404,
-                    _links: null,
-                }
-    
-                commit('SET_RESPONSE', responseData);
-            }
-        },
-    
-        async search({ commit }, params) {
-            try {
-                const response = await countryByName(params?.name, params?.fields, params?.fullText)
+                const response = await callingCodeApi(params?.code, params?.fields)
     
                 const responseData = {
                     data: response?.data || null,

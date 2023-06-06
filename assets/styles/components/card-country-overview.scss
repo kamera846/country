@@ -18,11 +18,11 @@
         line-height: 57px;
 
         color: $primary;
-        margin-bottom: $multipleOfFive * 2;
     }
 
     .box-description {
         position: relative;
+        margin-top: $multipleOfFive * 2;
 
         .description {
             font-weight: 500;
@@ -50,6 +50,17 @@
 
             &.active {
                 opacity: 1;
+            }
+        }
+    }
+
+    .skeleton-container {
+        width: 100%;
+
+        .skeleton {
+            &.circle {
+                width: $multipleOfFive * 12;
+                height: $multipleOfFive * 12;
             }
         }
     }

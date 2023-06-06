@@ -1,16 +1,21 @@
 <template>
     <div class="card card-country-location">
 
-        <div v-if="latLong" class="latLong">
+        <div v-if="latLong && !isLoading" class="latLong">
             <p class="name">LatLong</p>
             <h1 class="content">{{ latLong?.latitude }}, {{ latLong?.longitude }}</h1>
         </div>
 
-        <div v-if="location?.length != 0" class="location">
+        <div v-if="location?.length != 0 && !isLoading" class="location">
             <p v-for="(item, idx) in location" :key="idx" class="name">{{ item?.name }}: <strong class="value">{{ item?.value }}</strong></p>
         </div>
 
-        <img v-if="iconUrl" :src="iconUrl" alt="Globe Image" class="icon">
+        <img v-if="iconUrl && !isLoading" :src="iconUrl" alt="Globe Image" class="icon">
+
+        <div v-if="isLoading" class="skeleton-container">
+            <div class="skeleton small"></div>
+            <div class="skeleton medium"></div>
+        </div>
 
     </div>
 </template>
@@ -29,6 +34,10 @@ export default {
         iconUrl: {
             type: String,
             default: ''
+        },
+        isLoading: {
+            type: Boolean,
+            default: false
         }
     }
 }

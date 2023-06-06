@@ -10,9 +10,11 @@ html, body {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span {
+h1, h2, h3, h4, h5, h6, p, a {
     margin: 0;
     padding: 0;
+    color: $black;
+    text-decoration: none;
 }
 
 ul, li {
@@ -21,7 +23,7 @@ ul, li {
     padding: 0;
 }
 
-// Custom Global Settings
+// Custom Wrapper & Container
 .wrapper {
     width: 100%;
     height: auto;
@@ -36,6 +38,7 @@ ul, li {
     }
 }
 
+// Custom Card
 .card {
     background: $white;
 
@@ -45,6 +48,7 @@ ul, li {
     padding: $multipleOfFive * 5;
 }
 
+// Custom Badge
 .badge {
     background-color: $white;
     color: $black;
@@ -61,6 +65,30 @@ ul, li {
 
         background-color: $green;
         color: $white;
+    }
+}
+
+// Custom Skeleton
+.skeleton {
+    height: $multipleOfFive * 3;
+    border-radius: $multipleOfFive;
+    background-color: $light-gray;
+    animation: skeleton-animate 1s infinite;
+  
+    &.circle { border-radius: 50%; }
+  
+    &.full { width: 100%; }
+
+    &.large { width: 70%; }
+  
+    &.medium { width: 50%;}
+  
+    &.small { width: 30%; }
+  
+    @keyframes skeleton-animate {
+        0% { opacity: 0.5; }
+        50% { opacity: 0.8; }
+        100% { opacity: 0.5; }
     }
 }
 
