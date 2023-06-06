@@ -13,7 +13,7 @@
 
             min-width: fit-content;
             
-            border: 0.5px solid $ligh-gray;
+            border: 0.5px solid $light-gray;
             border-radius: $multipleOfFive * 2;
 
             .search-input {
@@ -33,7 +33,7 @@
                 color: $black;
 
                 &::placeholder {
-                    color: $ligh-gray;
+                    color: $light-gray;
                 }
             }
 
@@ -42,7 +42,7 @@
                 margin-right: $multipleOfFour * 7;
 
                 path {
-                    fill: $ligh-gray;
+                    fill: $light-gray;
                 }
             }
 
