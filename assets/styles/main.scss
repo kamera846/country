@@ -1,25 +1,82 @@
 @import './utilities/colors';
+@import './utilities/dimensions';
+@import '../fonts/SF-Pro-Text/index.scss';
 
+// Reset Global Settings
 html, body {
+    font-family: 'SF Pro Text', sans-serif;
+
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p, a, span {
     margin: 0;
     padding: 0;
 }
 
-.main {
-    .text-welcome {
-        cursor: pointer;
-        color: $green;
-        text-decoration: none;
-        
-        &:hover {
-            color: $red;
-            text-decoration: underline;
-        }
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
+// Custom Global Settings
+.wrapper {
+    width: 100%;
+    height: auto;
+
+    &.space-before { margin-top: $multipleOfFive * 18; }
+
+    .container {
+        max-width: $monitorScreen;
+
+        margin: 0 auto;
+        padding: 0 ($multipleOfFive * 18);
     }
+}
+
+.card {
+    background: $white;
+
+    box-shadow: ($multipleOfFour - 8px) ($multipleOfFour - 8px) $multipleOfFour rgba(0, 0, 0, 0.02), $multipleOfFour $multipleOfFour $multipleOfFour rgba(0, 0, 0, 0.02);
+    border-radius: $multipleOfFive;
+
+    padding: $multipleOfFive * 5;
+}
+
+.badge {
+    background-color: $white;
+    color: $black;
+
+    border-radius: $multipleOfFive * 10;
+
+    padding: $multipleOfFive ($multipleOfFour * 3);
+
+    &.badge-green {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+
+        background-color: $green;
+        color: $white;
+    }
+}
+
+// Global Responsive Settings
+@media screen and (max-width: $mobileScreen) {
+    .wrapper {
+        &.space-before { margin-top: $multipleOfFour * 7; }
+        .container { padding: 0 ($multipleOfFour * 7); }
+    }
+}
+
+@media screen and (max-width: $tabletScreen) {
+}
+
+@media screen and (max-width: $laptopScreen) {
+}
+
+@media screen and (max-width: $monitorScreen) {
 }

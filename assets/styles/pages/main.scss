@@ -1,0 +1,33 @@
+@import "../utilities/colors";
+@import "../utilities/dimensions";
+
+#main {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .main-title {
+        &.wrapper { margin-bottom: $multipleOfFour * 10; }
+
+        .text {
+            width: 100%;
+
+            font-style: normal;
+            font-weight: 700;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: center;
+            
+            color: $black;
+        }
+    }
+
+    .search-dropdown .input-group {
+            max-width: $multipleOfFive * 140;
+            margin: 0 auto;
+    }
+}

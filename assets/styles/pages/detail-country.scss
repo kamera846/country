@@ -1,0 +1,63 @@
+@import "../utilities/colors";
+@import "../utilities/dimensions";
+
+#detail-country {
+    width: 100%;
+
+    .header {
+        .container.button { padding-bottom: $multipleOfFive * 10; }
+        
+        .box-title {
+            display: flex;
+            align-items: center;
+            gap: $multipleOfFive * 2;
+
+            .country-name {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 48px;
+                line-height: 57px;
+
+                color: $black;
+            }
+
+            .country-flag {
+                max-width: $multipleOfFive * 6;
+            }
+        }
+
+        .box-badge {
+            padding-bottom: $multipleOfFive * 5;
+
+            ul {
+                display: flex;
+                align-items: center;
+                gap: $multipleOfFive;
+            }
+        }
+    }
+
+    .body {
+        .container:first-child {
+            margin-bottom: $multipleOfFive * 8;
+        }
+
+        .box-overview {
+            display: flex;
+            gap: $multipleOfFive * 5;
+
+            .card-country-location, .card-country-overview {
+                width: 100%;
+                flex-grow: 1;
+            }
+
+            @media screen and (max-width: $mobileScreen) {
+                flex-wrap: wrap;
+            }
+            
+            @media screen and (max-width: $tabletScreen) {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

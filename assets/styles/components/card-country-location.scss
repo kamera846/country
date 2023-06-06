@@ -1,0 +1,64 @@
+@import "../utilities/colors";
+@import "../utilities/dimensions";
+
+.card-country-location {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    overflow:hidden ;
+
+    .latLong {
+        font-style: normal;
+
+        .name {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+
+            color: $black;
+
+            margin-bottom: $multipleOfFive * 2;
+        }
+
+        .content {
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 57px;
+
+            color: $primary;
+        }
+
+    }
+
+    .icon {
+        position: absolute;
+        right: 0;
+        bottom: -60%;
+
+        height: 204px;
+        object-fit: contain;
+    }
+
+    .location {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: $multipleOfFour * 2;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+
+        color: $black;
+
+        .value {
+            font-weight: 500;
+        }
+    }
+}
