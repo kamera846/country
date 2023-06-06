@@ -21,7 +21,7 @@ export default {
     actions: {
         async code({ commit }, params) {
             try {
-                const response = await callingCodeApi(params?.fields)
+                const response = await callingCodeApi(params?.code, params?.fields)
     
                 const responseData = {
                     data: response?.data || null,

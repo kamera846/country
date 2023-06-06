@@ -18,7 +18,7 @@
             </p>
 
             <!-- Component Tooltip -->
-            <CardTooltipItems :class="isShowTooltip" />
+            <CardTooltipItems :class="isShowTooltip" :items="items"/>
 
         </div>
         <div v-else class="skeleton-container box-description">

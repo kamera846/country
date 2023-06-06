@@ -56,9 +56,10 @@
 
                     <!-- Component Card Country Overview -->
                     <CardCountryOverview
-                        :isLoading="isLoading"
+                        :isLoading="isCallingCodeLoading"
                         title="Calling Code"
-                        content="62"
+                        :content="callingcode?.codes[0]"
+                        :items="callingcode?.countries"
                         itemTitle="country"
                         description="with this calling code" />
 
@@ -81,6 +82,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { generateCallingCodeFromIDD } from "@/commons/utils";
 
 import ButtonAction from "@/components/buttons/ButtonAction.vue";
 import CardCountryOverview from "@/components/cards/CardCountryOverview.vue";
@@ -102,8 +104,10 @@ export default {
         return {
             isLoading: false,
             isCountryLoading: true,
+            isCallingCodeLoading: true,
 
             country: null,
+            callingcode: null,
         }
     },
     computed: {
@@ -113,6 +117,7 @@ export default {
         })
     },
     methods: {
+        generateCallingCodeFromIDD,
         ...mapActions({
             getCountry: 'country/search',
             getCallingCode: 'callingcode/code',
@@ -122,7 +127,7 @@ export default {
 
             const params = {
                 name: this.slug,
-                fields: 'name,flags,latlng,altSpellings,capital,region,subregion',
+                fields: 'name,flags,latlng,altSpellings,capital,region,subregion,idd',
                 fullText: true
             }
 
@@ -138,6 +143,7 @@ export default {
                         name: data?.name?.common,
                         flags: data?.flags,
                         altSpellings: data?.altSpellings,
+                        callingCode: this.generateCallingCodeFromIDD(data?.idd),
                         latlng: {
                             latitude: data?.latlng[0].toFixed(1),
                             longitude: data?.latlng[1].toFixed(1),
@@ -149,9 +155,43 @@ export default {
                         ]
                     }
                     this.country = object
-                } 
+                }
 
                 this.isCountryLoading = false
+                this.fetchCallingCode()
+            })
+        },
+        fetchCallingCode() {
+            this.isCallingCodeLoading = true
+
+            const params = {
+                code: this.country?.callingCode,
+                fields: 'currencies,callingCodes,name',
+            }
+
+            this.getCallingCode(params).then(() => {
+                const response = this.callingcodeState
+
+                if (response?.status === 404) console.error(response?.message);
+                else {
+                    const data = response?.data
+                    this.callingcode = {
+                        codes: [],
+                        countries: [],
+                        currencyCodes: [],
+                        currencyCode: '',
+                    }
+                    
+                    data?.map(item => { 
+                        this.callingcode.codes = item?.callingCodes
+                        this.callingcode.countries.push(item?.name)
+                        this.callingcode.currencyCodes = item?.currencies
+                        this.callingcode.currencyCode = item?.currencies[0]?.code
+                    })
+
+                }
+
+                this.isCallingCodeLoading = false
             })
         }
     },
