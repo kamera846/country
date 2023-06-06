@@ -24,6 +24,7 @@
 
             .country-flag {
                 max-height: $multipleOfFive * 6;
+                border: 0.5px solid $thin-gray;
             }
         }
 
