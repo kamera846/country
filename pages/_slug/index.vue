@@ -28,7 +28,20 @@
 
         <div class="body wrapper">
             <div class="container">
-                <!-- Body Contents -->
+                <div class="box-overview">
+                    <CardCountryOverview
+                        title="Calling Code"
+                        content="62"
+                        itemTitle="country"
+                        description="with this calling code"
+                    />
+                    <CardCountryOverview
+                        title="Currency"
+                        content="IDR"
+                        itemTitle="country"
+                        description="with this currency"
+                    />
+                </div>
             </div>
         </div>
 
@@ -37,10 +50,11 @@
 
 <script>
 import ButtonAction from "@/components/buttons/ButtonAction.vue";
+import CardCountryOverview from "@/components/cards/CardCountryOverview.vue";
 
 export default {
 	name: "DetailCountryPage",
-    components: { ButtonAction },
+    components: { ButtonAction, CardCountryOverview },
     asyncData({params}) {
         const slug = params?.slug
         return { slug }

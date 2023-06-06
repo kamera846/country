@@ -4,34 +4,46 @@
 #detail-country {
     width: 100%;
 
-    .container.button { padding-bottom: $multipleOfFive * 10; }
-    
-    .box-title {
-        display: flex;
-        align-items: center;
-        gap: $multipleOfFive * 2;
+    .header {
+        .container.button { padding-bottom: $multipleOfFive * 10; }
+        
+        .box-title {
+            display: flex;
+            align-items: center;
+            gap: $multipleOfFive * 2;
 
-        .country-name {
-            font-style: normal;
-            font-weight: 700;
-            font-size: 48px;
-            line-height: 57px;
+            .country-name {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 48px;
+                line-height: 57px;
 
-            color: $black;
+                color: $black;
+            }
+
+            .country-flag {
+                max-width: $multipleOfFive * 6;
+            }
         }
 
-        .country-flag {
-            max-width: $multipleOfFive * 6;
+        .box-badge {
+            padding-bottom: $multipleOfFive * 5;
+
+            ul {
+                display: flex;
+                align-items: center;
+                gap: $multipleOfFive;
+            }
         }
     }
 
-    .box-badge {
-        padding-bottom: $multipleOfFive * 5;
-
-        ul {
+    .body {
+        .box-overview {
             display: flex;
             align-items: center;
-            gap: $multipleOfFive;
+            justify-content: flex-start;
+            flex-direction: row;
+            gap: $multipleOfFive * 5;
         }
     }
 }
