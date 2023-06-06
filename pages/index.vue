@@ -10,11 +10,13 @@
         <SearchDropdown
             placeholder="Type any country name"
             withIcon />
+
     </div>
 </template>
 
 <script>
-import SearchDropdown from "@/components/SearchDropdown.vue";
+import SearchDropdown from "@/components/inputs/SearchDropdown.vue";
+
 export default {
 	name: "SearchEnginePage",
     components: { SearchDropdown }

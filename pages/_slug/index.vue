@@ -1,7 +1,9 @@
 <template>
     <div id="detail-country">
+
         <div class="header wrapper space-before">
-            <div class="container">
+
+            <div class="button container">
                 <ButtonAction
                     title="Back to Homepage"
                     withIcon />
@@ -12,6 +14,7 @@
                     <h1 class="country-name">{{ this.slug }}</h1>
                     <img class="country-flag" src="https://flagcdn.com/id.svg" alt="The flag of Indonesia is composed of two equal horizontal bands of red and white.">
                 </div>
+                
                 <div class="box-badge">
                     <ul>
                         <li class="badge badge-green">ID</li>
@@ -20,6 +23,7 @@
                     </ul>
                 </div>
             </div>
+
         </div>
 
         <div class="body wrapper">
@@ -27,11 +31,13 @@
                 <!-- Body Contents -->
             </div>
         </div>
+
     </div>
 </template>
 
 <script>
-import ButtonAction from "@/components/ButtonAction.vue";
+import ButtonAction from "@/components/buttons/ButtonAction.vue";
+
 export default {
 	name: "DetailCountryPage",
     components: { ButtonAction },
