@@ -45,7 +45,7 @@ export default {
     
         async search({ commit }, params) {
             try {
-                const response = await countryByName(params?.name, params?.fullText)
+                const response = await countryByName(params?.name, params?.fields, params?.fullText)
     
                 const responseData = {
                     data: response?.data || null,
