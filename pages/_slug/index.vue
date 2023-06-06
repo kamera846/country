@@ -65,9 +65,10 @@
 
                     <!-- Component Card Country Overview -->
                     <CardCountryOverview
-                        :isLoading="isLoading"
+                        :isLoading="isCUrrencyLoading"
                         title="Currency"
-                        content="IDR"
+                        :content="currency?.currencies[0]?.code"
+                        :items="currency?.countries"
                         itemTitle="country"
                         description="with this currency" />
 
@@ -105,15 +106,18 @@ export default {
             isLoading: false,
             isCountryLoading: true,
             isCallingCodeLoading: true,
+            isCUrrencyLoading: true,
 
             country: null,
             callingcode: null,
+            currency: null,
         }
     },
     computed: {
         ...mapState({
             countryState: (state) => state?.country,
             callingcodeState: (state) => state?.callingcode,
+            currencyState: (state) => state?.currency,
         })
     },
     methods: {
@@ -121,6 +125,7 @@ export default {
         ...mapActions({
             getCountry: 'country/search',
             getCallingCode: 'callingcode/code',
+            getCurrency: 'currency/code',
         }),
         fetchCountry() {
             this.isCountryLoading = true
@@ -192,6 +197,36 @@ export default {
                 }
 
                 this.isCallingCodeLoading = false
+                this.fetchCurrency()
+            })
+        },
+        fetchCurrency() {
+            this.isCUrrencyLoading = true
+
+            const params = {
+                code: this.callingcode?.currencyCode,
+                fields: 'currencies,name',
+            }
+
+            this.getCurrency(params).then(() => {
+                const response = this.currencyState
+
+                if (response?.status === 404) console.error(response?.message);
+                else {
+                    const data = response?.data
+                    this.currency = {
+                        currencies: [],
+                        countries: [],
+                    }
+                    
+                    data?.map(item => { 
+                        this.currency.currencies = item?.currencies
+                        this.currency.countries.push(item?.name)
+                    })
+
+                }
+
+                this.isCUrrencyLoading = false
             })
         }
     },

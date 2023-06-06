@@ -15,8 +15,8 @@ const callingCodeApi = (code = 372, fields) => {
     let url = BASE_URL + `/callingcode/${ code }`
     url = params ? url + '?' + params : url;
 
-    // Output with available param: https://restcountries.com/v3.1/name/Indonesia?fullText={FULLTEXT_VALUE}
-    // Output with empty param: https://restcountries.com/v3.1/name/Indonesia
+    // Output with available param: https://restcountries.com/v2/callingcode/372?fields={FIELDS_VALUE}
+    // Output with empty param: https://restcountries.com/v2/callingcode/372
 
     return axios.get(url)
 }
